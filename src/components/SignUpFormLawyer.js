@@ -25,7 +25,7 @@ const validationSchema = Yup.object().shape({
     .required('Telefon Numarası Gereklidir'),
   file: Yup.mixed()
     .required('Baro Belgenizi Yüklemeniz Zorunludur')
-    .test('type', '*Sadece .jpeg, .jpg, .png, .pdf Formatı', value => {
+    .test('type', '*Sadece .jpeg .jpg .png .pdf Formatı', value => {
       if (value) {
         return (
           (value && value.type === 'image/jpeg') ||
@@ -235,31 +235,33 @@ function SignUpFormLawyer() {
                 ref={fileInput}
               />
               <div className='mx-2'>Belge Seç</div>
-              {values.file && !(values.file.type == 'application/pdf') ? (
-                <img
-                  style={{ maxHeight: '160px' }}
-                  className='ml-2 w-7/12 object-contain rounded-md'
-                  src={URL.createObjectURL(values.file)}
-                />
-              ) : (
-                ''
-              )}
-              {values.file && values.file.type == 'application/pdf' ? (
-                <embed
-                  style={{ maxHeight: '160px' }}
-                  className='ml-2 w-7/12 object-contain rounded-md'
-                  src={URL.createObjectURL(values.file)}
-                />
-              ) : (
-                ''
-              )}
-            </div>
-            <div className='text-opacity-100 text-avukatimKirmizi text-sm font-medium m-1'>
-              {values.file ? (
-                <p>{values.file.name}</p>
-              ) : (
-                <p className='invisible'>a</p>
-              )}
+              {/*
+                  {values.file && !(values.file.type == 'application/pdf') ? (
+                    <img
+                      style={{ maxHeight: '160px' }}
+                      className='ml-2 w-7/12 object-contain rounded-md'
+                      src={URL.createObjectURL(values.file)}
+                    />
+                  ) : (
+                    ''
+                  )}
+                  {values.file && values.file.type == 'application/pdf' ? (
+                    <embed
+                      style={{ maxHeight: '160px' }}
+                      className='ml-2 w-7/12 object-contain rounded-md'
+                      src={URL.createObjectURL(values.file)}
+                    />
+                  ) : (
+                    ''
+                  )}
+              */}
+              <div className='text-opacity-100 text-avukatimKirmizi text-sm font-medium m-1'>
+                {values.file ? (
+                  <p>{values.file.name}</p>
+                ) : (
+                  <p className='invisible'>a</p>
+                )}
+              </div>
             </div>
             <div className='text-opacity-60 text-avukatimKirmizi text-sm font-light m-1'>
               {errors.file && touched.file ? (

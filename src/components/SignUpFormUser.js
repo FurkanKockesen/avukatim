@@ -2,13 +2,7 @@ import React from 'react';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import 'yup-phone';
-import {
-  LockClosedIcon,
-  MailIcon,
-  PhoneIcon,
-  PhotographIcon,
-  UserIcon,
-} from '@heroicons/react/solid';
+import { LockClosedIcon, MailIcon, UserIcon } from '@heroicons/react/solid';
 
 const validationSchema = Yup.object().shape({
   firstName: Yup.string().required('İsim'),
@@ -20,27 +14,8 @@ const validationSchema = Yup.object().shape({
   confirmPassword: Yup.string()
     .oneOf([Yup.ref('password'), null], 'Şifre Tekrarı Yanlış')
     .required('Şifre Tekrarı Zorunludur'),
-  phone: Yup.string()
-    .phone('TR', true, 'Geçersiz Telefon Numarası')
-    .required('Telefon Numarası Gereklidir'),
-  file: Yup.mixed()
-    .required('Baro Belgenizi Yüklemeniz Zorunludur')
-    .test('type', '*Sadece .jpeg, .jpg, .png, .pdf Formatı', value => {
-      if (value) {
-        return (
-          (value && value.type === 'image/jpeg') ||
-          value.type === 'image/jpg' ||
-          value.type === 'image/png' ||
-          value.type === 'application/pdf'
-        );
-      }
-    })
-    .test('fileSize', "*Sadece 2MB'tan küçük dosya", value => {
-      return value && value.size <= 2000000;
-    }),
 });
 function SignUpFormUser() {
-  const fileInput = React.createRef();
   return (
     <Formik
       initialValues={{
@@ -49,8 +24,6 @@ function SignUpFormUser() {
         email: '',
         password: '',
         confirmPassword: '',
-        phone: '',
-        file: '',
       }}
       validationSchema={validationSchema}
       onSubmit={values => {

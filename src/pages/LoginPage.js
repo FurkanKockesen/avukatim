@@ -1,7 +1,5 @@
 import Head from 'next/head';
 import HeaderSecondary from '../components/HeaderSecondary';
-import Image from 'next/image';
-
 import FooterSecondary from '../components/FooterSecondary';
 import LoginForm from '../components/LoginForm';
 
@@ -39,7 +37,12 @@ export default function Home() {
             <div className='loginHero h-full relative '></div>
           </div>
           <div className='flex-1 flex justify-center items-center'>
-            <LoginForm />
+            <div className='flex flex-col items-center w-80 lg:w-96 max-w-full shadowLight bg-white  rounded-lg mx-auto mb-10'>
+              <h1 className='text-3xl font-semibold text-avukatimKirmizi my-5'>
+                Giriş Yap
+              </h1>
+              <LoginForm />
+            </div>
           </div>
         </div>
       </section>

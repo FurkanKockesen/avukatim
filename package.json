@@ -21,7 +21,8 @@
     "react-dropdown-select": "^4.7.4",
     "react-icons": "^4.2.0",
     "react-redux": "7.2.2",
-    "yup": "^0.32.9"
+    "yup": "^0.32.9",
+    "yup-phone": "^1.2.19"
   },
   "license": "MIT",
   "devDependencies": {
